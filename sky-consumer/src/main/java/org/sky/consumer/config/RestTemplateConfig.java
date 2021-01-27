@@ -1,4 +1,4 @@
-package org.sky.nacos.consumer.config;
+package org.sky.consumer.config;
 
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;

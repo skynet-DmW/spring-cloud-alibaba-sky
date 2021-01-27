@@ -1,4 +1,4 @@
-package org.sky.nacos.consumer;
+package org.sky.provider;
 
 
 import org.springframework.boot.SpringApplication;
@@ -8,10 +8,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class NacosConsumerApplication {
+public class ProviderApplication {
 
 	public static void main(String[] args) {
-        SpringApplication.run(NacosConsumerApplication .class, args);
+        SpringApplication.run(ProviderApplication .class, args);
 	}
 
 }

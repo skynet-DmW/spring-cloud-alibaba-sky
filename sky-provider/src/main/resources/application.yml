@@ -1,8 +1,8 @@
 server:
-  port: 8082
+  port: 8081
 spring:
   application:
-    name: nacos-consumer
+    name: sky-provider
   cloud:
     nacos:
       discovery:

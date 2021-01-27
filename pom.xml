@@ -10,8 +10,8 @@
     <packaging>pom</packaging>
     <version>1.0.0-RELEASE</version>
     <modules>
-        <module>sky-nacos-provider</module>
-        <module>sky-nacos-consumer</module>
+        <module>sky-provider</module>
+        <module>sky-consumer</module>
         <module>sky-nacos-config</module>
     </modules>
 

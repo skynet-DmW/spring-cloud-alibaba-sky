@@ -1,12 +1,16 @@
 server:
-  port: 8081
+  port: 8082
 spring:
   application:
-    name: nacos-provider
+    name: sky-consumer
   cloud:
     nacos:
       discovery:
         server-addr: 'localhost:8848'
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: 'localhost:8080'
 management:
   endpoints:
     web:

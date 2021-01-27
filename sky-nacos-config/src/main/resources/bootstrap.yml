@@ -1,6 +1,6 @@
 spring:
   application:
-    name: nacos-config
+    name: sky-nacos-config
   cloud:
     nacos:
       config:

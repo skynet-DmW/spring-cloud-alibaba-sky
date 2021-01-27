@@ -1,5 +1,6 @@
-package org.sky.nacos.consumer.controller;
+package org.sky.consumer.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 
 @RestController
 @Slf4j
-public class NacosController {
+public class ConsumerEchoController {
 
     @Autowired
     private LoadBalancerClient loadBalancerClient;
@@ -26,10 +27,22 @@ public class NacosController {
     @GetMapping("/echo/app-name")
     public String echoAppName() {
         // 通过LoadBalanceClient和RestTemplate的组合进行访问
-        ServiceInstance serviceInstance = loadBalancerClient.choose("nacos-provider");
+        ServiceInstance serviceInstance = loadBalancerClient.choose("sky-provider");
         String path = String.format("http://%s:%s/echo/%s", serviceInstance.getHost(), serviceInstance.getPort(), appName);
         log.info("请求 path：{}", path);
         return restTemplate.getForObject(path, String.class);
+    }
+
+
+    @GetMapping("/echo/sentinel")
+    @SentinelResource(value = "echoSentinel",
+            blockHandlerClass = ConsumerEchoHandler.class,
+            blockHandler = "echoSentinelHandler",
+            fallbackClass = ConsumerEchoFallBack.class,
+            fallback = "echoSentinelFallback"
+    )
+    public String echoSentinel () {
+        return appName;
     }
 
 
