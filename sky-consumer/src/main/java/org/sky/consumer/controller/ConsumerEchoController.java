@@ -1,6 +1,7 @@
 package org.sky.consumer.controller;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -41,8 +42,22 @@ public class ConsumerEchoController {
             fallbackClass = ConsumerEchoFallBack.class,
             fallback = "echoSentinelFallback"
     )
-    public String echoSentinel () {
+    public String echoSentinel() {
         return appName;
+    }
+
+
+    @GetMapping("/echo/sentinel2")
+    @SentinelResource(value = "echoSentinel2",
+            blockHandler = "echoSentinelHandler")
+    public String echoSentinel2() {
+        return appName;
+    }
+
+
+    public String echoSentinelHandler(BlockException e) {
+        log.error("错误信息：{}", e.getMessage(), e);
+        return "限流异常处理";
     }
 
 
