@@ -3,16 +3,13 @@ server:
 spring:
   application:
     name: sky-consumer
-  cloud:
-    nacos:
-      discovery:
-        server-addr: 'localhost:8848'
-    sentinel:
-      transport:
-        port: 8719
-        dashboard: 'localhost:8080'
+
 management:
   endpoints:
     web:
       exposure:
         include: '*'
+
+logging:
+  level:
+    root: DEBUG

@@ -1,8 +1,8 @@
 package org.sky.consumer.controller;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
-import com.alibaba.csp.sentinel.slots.block.BlockException;
 import lombok.extern.slf4j.Slf4j;
+import org.sky.consumer.bean.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
@@ -24,6 +24,9 @@ public class ConsumerEchoController {
     @Value("${spring.application.name}")
     private String appName;
 
+    @Autowired
+    private User user;
+
 
     @GetMapping("/echo/app-name")
     public String echoAppName() {
@@ -32,6 +35,13 @@ public class ConsumerEchoController {
         String path = String.format("http://%s:%s/echo/%s", serviceInstance.getHost(), serviceInstance.getPort(), appName);
         log.info("请求 path：{}", path);
         return restTemplate.getForObject(path, String.class);
+    }
+
+
+    @GetMapping("/echo/user")
+    public User user() {
+        log.info("用户 user：{}", user);
+        return user;
     }
 
 
@@ -47,17 +57,14 @@ public class ConsumerEchoController {
     }
 
 
+    /**
+     * 走默认流控策略
+     * @return
+     */
     @GetMapping("/echo/sentinel2")
-    @SentinelResource(value = "echoSentinel2",
-            blockHandler = "echoSentinelHandler")
+    @SentinelResource
     public String echoSentinel2() {
         return appName;
-    }
-
-
-    public String echoSentinelHandler(BlockException e) {
-        log.error("错误信息：{}", e.getMessage(), e);
-        return "限流异常处理";
     }
 
 
