@@ -1,0 +1,27 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: sky-server2
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+dubbo:
+  registry:
+    address: nacos://${spring.cloud.nacos.discovery.server-addr}
+  protocol:
+    name: dubbo
+    port: -1 # dubbo 协议端口（ -1 表示自增端口，从 20880 开始）
+  scan:
+    base-packages: org.sky.service # dubbo 服务扫描基准包
+  cloud:
+    # 用于服务消费方订阅服务提供方的应用名称的列表，若需订阅多应用，使用 "," 分割
+    subscribed-services: sky-server1
+
+logging:
+  level:
+    root: DEBUG
