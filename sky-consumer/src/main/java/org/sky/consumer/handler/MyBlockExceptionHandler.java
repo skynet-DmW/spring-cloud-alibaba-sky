@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  * 自定义sentinel异常返回信息
  */
 @SpringBootConfiguration
-public class UrlBlockHandler implements BlockExceptionHandler {
+public class MyBlockExceptionHandler implements BlockExceptionHandler {
 
 
     @Override

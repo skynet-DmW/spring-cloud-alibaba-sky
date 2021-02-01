@@ -9,10 +9,10 @@
     <artifactId>spring-cloud-alibaba-sky</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0-RELEASE</version>
+
     <modules>
         <module>sky-provider</module>
         <module>sky-consumer</module>
-        <module>sky-nacos-config</module>
     </modules>
 
 
