@@ -7,6 +7,37 @@ spring:
     nacos:
       discovery:
         server-addr: 'localhost:8848'
+    stream:
+      rocketmq:
+        binder:
+          name-server: 'localhost:9876'
+        bindings:
+          orderly-msg:
+            producer:
+              group: orderly-group
+              sync: true # 消息同步发送
+
+          transaction-msg:
+            producer:
+              group: transaction-group
+              transactional: true # 是否是事务消息
+
+      bindings:
+        normal-msg:
+          destination: normal-topic
+          content-type: application/json
+          group: normal-group
+
+        orderly-msg:
+          destination: orderly-topic
+          content-type: application/json
+          group: orderly-group
+
+        transaction-msg:
+          destination: transaction-topic
+          content-type: application/json
+          group: transaction-group
+
 management:
   endpoints:
     web:
