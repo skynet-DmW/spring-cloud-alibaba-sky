@@ -6,3 +6,7 @@ spring:
       config:
         server-addr: 'localhost:8848'
         file-extension: yaml
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: 'localhost:8080'

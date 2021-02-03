@@ -11,9 +11,9 @@
     <version>1.0.0-RELEASE</version>
 
     <modules>
+        <module>sky-gateway</module>
         <module>sky-server1</module>
         <module>sky-server2</module>
-        <module>sky-gateway</module>
     </modules>
 
 
@@ -26,7 +26,6 @@
         <spring.boot.version>2.3.8.RELEASE</spring.boot.version>
         <spring.cloud.alibaba.version>2.2.4.RELEASE</spring.cloud.alibaba.version>
         <org.projectlombok.version>1.18.8</org.projectlombok.version>
-        <sentinel.datasource.nacos.version>1.8.0</sentinel.datasource.nacos.version>
         <org.apache.commons.version>3.9</org.apache.commons.version>
     </properties>
 

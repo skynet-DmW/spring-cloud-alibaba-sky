@@ -6,6 +6,11 @@ package org.sky.service;
 public interface EchoService {
 
 
+    /**
+     * 对外提供的dubbo服务
+     * @param message
+     * @return
+     */
     String echo(String message);
 
 }

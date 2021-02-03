@@ -3,22 +3,23 @@ spring:
     nacos:
       discovery:
         server-addr: 'localhost:8848'
-      config:
-        server-addr: 'localhost:8848'
-        file-extension: yaml
     sentinel:
       transport:
         port: 8719
         dashboard: 'localhost:8080'
-      datasource: # 将Sentinel放入nacos的数据库
-        ds1:
-          nacos:
-            server-addr: 'localhost:8848'
-            data-id: sentinel
-            group-id: DEFAULT_GROUP
-            data-type: json
-            rule-type: flow
 
-user:
-  name: zmm
-  age: 16
+    gateway:
+      routes:
+        - id: server1
+          uri: lb://sky-server1
+          predicates:
+            - Path=/server1/**
+          filters:
+            - StripPrefix=1
+
+        - id: server2
+          uri: lb://sky-server2
+          predicates:
+            - Path=/server2/**
+          filters:
+            - StripPrefix=1
