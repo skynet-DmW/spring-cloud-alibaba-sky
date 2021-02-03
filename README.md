@@ -12,8 +12,6 @@ RocketMQ Version：4.4.0
 
 Dubbo Version：2.7.8
 
-Seata Version：1.3.0
-
 1. Spring-Cloud-Alibaba版本说明：https://github.com/alibaba/spring-cloud-alibaba/wiki/版本说明
 
 3. SpringCloudAlibaba中文社区地址: https://github.com/alibaba/spring-cloud-alibaba/blob/master/README-zh.md

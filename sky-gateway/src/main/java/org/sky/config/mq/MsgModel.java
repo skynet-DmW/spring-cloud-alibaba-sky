@@ -18,3 +18,4 @@ public class MsgModel implements Serializable {
     private long time;
 
 }
+

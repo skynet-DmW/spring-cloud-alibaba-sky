@@ -32,3 +32,4 @@ public interface MsgSink {
     @Input("transaction-msg")
     SubscribableChannel transactionMsg();
 }
+

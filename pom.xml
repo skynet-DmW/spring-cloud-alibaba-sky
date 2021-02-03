@@ -13,6 +13,7 @@
     <modules>
         <module>sky-server1</module>
         <module>sky-server2</module>
+        <module>sky-gateway</module>
     </modules>
 
 
